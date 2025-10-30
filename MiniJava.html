@@ -1,0 +1,94 @@
+<html><head>
+<title>CSE P 501 - MiniJava</title>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"></head>
+
+<body bgcolor="#ffffff">
+
+<h1 align="left">CSE P 501 Au11 - MiniJava</h1>
+<h2 align="left">Overview</h2>
+<p align="left">The course project is to implement the MiniJava language
+  specified in the Appendix of Appel's <em>Modern Compiler Implementation in
+  Java, </em>2nd edition and described on the <a href="http://www.cambridge.org/resources/052182060X/">MiniJava
+  web site</a>. MiniJava is
+  a subset of Java and the meaning of a MiniJava program is given by its meaning
+  as a
+  Java
+  program.</p>
+<p align="left">Compared to full Java, a MiniJava program consists of a single
+  class containing a static main method followed by zero or more other classes.
+  There are no other static methods or variables. Classes may extend other classes,
+  and method overriding is included, but method overloading is not.
+  All classes making up a MiniJava program are included in a single source file.
+   The only types available are <code>int</code>, <code>boolean</code>,  <code>int[]</code> and reference types (classes). "<code>System.out.println(...);</code>"
+   is a statement and can only print integers - it is not a normal method call,
+   and does not refer to a static method of a class. All methods are value-returning
+   and must end with a single <code>return</code> statement. The only other available
+   statements are <code>if</code>, <code>while</code>, and assignment. There are other simplifications to keep the project size reasonable.</p>
+<p align="left">The <a href="http://www.cambridge.org/resources/052182060X/MCIIJ2e/grammar.htm">full
+MiniJava grammar</a> is given on the project web site and in the Appendix of
+Appel's <em>Modern Compiler Implementation in Java</em> (2nd ed). Look 
+at the
+grammar carefully to see what is and is not included in the language 
+subset. You should implement  full MiniJava as described there, except 
+that you do  not need to implement nested <code>/*</code> comments <code>*/</code>. (You need to implement <code>/* */</code> comments,  but do not need to allow them to nest, i.e., the first <code>*/</code> terminates any  open  comment regardless of how many <code>/*</code> symbols have appeared before it, as in standard  Java. You also need to implement <code>//</code> comments.)</p>
+<p align="left">There are two symbols in the grammar that are not   
+otherwise specified. An &lt;IDENTIFIER&gt; is a sequence of letters,   
+digits, and underscores, starting with a letter. Uppercase letters are  
+ distinguished from lowercase. An &lt;INTEGER_LITERAL&gt; is a sequence 
+  of decimal digits that denotes an integer value.</p>
+<h2>Extensions</h2>
+<p>The basic project requirements are small enough to be tractable in a one-quarter
+  course project, but include enough to cover the core ideas of compiling an
+  object-oriented
+(as well as procedural) language. If you are feeling ambitous and have the time,
+  you are invited to add additional parts of Java to the language. Here are a
+  few suggestions.</p>
+<p><em>Some Simple Ideas</em></p>
+<ul>
+  <li>Add /* ... */ comments  that might or might not span
+    multiple lines, with or without nesting.</li>
+  <li>Add additional binary arithmetic and relational operators for integers.</li>
+  <li>Add <code>null</code> as a constant expression and support <code>==</code> and <code>!=</code> for object reference
+    types.</li>
+  <li>Allow <code>return</code> statements anywhere in a method.</li>
+  <li>Allow calls of local methods without the explicit use of <code>this</code>.</li>
+  <li>Relax the ordering of declarations so that variables can be declared anywhere
+    in a method body.</li>
+  <li>Allow initialization of variables in declarations.</li>
+  <li>Add <code>void</code> methods, a <code>return</code> statement with no
+    expression, and appropriate type checking rules.</li>
+  <li>Support <code>public</code> and <code>private</code> declarations on both
+  methods and instance variables, and check to ensure that access restrictions
+    are not violated.</li>
+</ul>
+<p>Adding an additional numeric type like <code>double</code> would not be particularly
+  interesting, since there is relatively little difference in how the compiler
+  handles <code>ints</code> and
+  <code>doubles</code>. However, adding <code>String</code> literals and the
+  concatenation (+) operator would be interesting.</p>
+<p><em>More Sophisticated, but very interesting</em></p>
+<ul>
+  <li>Support <code>instanceof</code> and type casts (which can require a runtime <code>instanceof</code>    check).</li>
+  <li>Support <code>super.</code> as a prefix in ordinary method calls.</li>
+  <li>Add constructor declarations with optional parameters. To make this useful,
+      you probably want to include the use of <code>super(...)</code> at the
+      beginning of the body of a constructor.</li>
+  <li>Support arrays of objects (no harder to implement than arrays of ints,
+  except the type checking rules are more interesting).</li>
+</ul>
+<p>Of the suggested extensions, adding <code>instanceof</code>, type casts, and <code>super.</code> are
+  particularly instructive.</p>
+<p>Some extra credit will be awarded to projects that go beyond the basic
+  requirements.</p>
+<h2>Implementation Languages</h2>
+<p>The project description and information are written assuming you are 
+implementing the project in Java. Other implementation languages are 
+allowed provided they are reasonable; please check with the instructor 
+first if you wish to try something different. If you do use a different 
+language you should use lex/yacc - equivalent tools to generate the 
+parser and scanner, and you will need to make the appropriate 
+adjustments in instructions in places where they describe specific 
+implementation details.</p>
+
+
+</body></html>

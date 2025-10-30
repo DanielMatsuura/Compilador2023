@@ -1,0 +1,178 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>BNF for MiniJava</title>
+<!--<script src="https://ssl.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-31379-1";
+_udn = "cambridge.org";
+urchinTracker();
+</script>-->
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="grammar_archivos/ga.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-31379-1");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script>
+
+
+</head>
+<body vlink="#0000EE" bgcolor="#FFFFFF" link="#0000EE">
+<h1 align="CENTER">BNF for MiniJava</h1>
+<h2 align="CENTER">NON-TERMINALS</h2>
+<table>
+<tbody><tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod1">Goal</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod2">MainClass</a> ( <a href="#prod3">ClassDeclaration</a> )* &lt;EOF&gt;</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod2">MainClass</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT">"class" <a href="#prod4">Identifier</a> "{" "public" "static" "void" "main" "(" "String" "[" "]" <a href="#prod4">Identifier</a> ")" "{" <a href="#prod5">Statement</a> "}" "}"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod3">ClassDeclaration</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT">"class" <a href="#prod4">Identifier</a> ( "extends" <a href="#prod4">Identifier</a> )? "{" ( <a href="#prod6">VarDeclaration</a> )* ( <a href="#prod7">MethodDeclaration</a> )* "}"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod6">VarDeclaration</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod8">Type</a> <a href="#prod4">Identifier</a> ";"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod7">MethodDeclaration</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT">"public" <a href="#prod8">Type</a> <a href="#prod4">Identifier</a> "(" ( <a href="#prod8">Type</a> <a href="#prod4">Identifier</a> ( "," <a href="#prod8">Type</a> <a href="#prod4">Identifier</a> )* )? ")" "{" ( <a href="#prod6">VarDeclaration</a> )* ( <a href="#prod5">Statement</a> )* "return" <a href="#prod9">Expression</a> ";" "}"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod8">Type</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT">"int" "[" "]"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"boolean"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"int"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod4">Identifier</a></td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod5">Statement</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT">"{" ( <a href="#prod5">Statement</a> )* "}"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"if" "(" <a href="#prod9">Expression</a> ")" <a href="#prod5">Statement</a> "else" <a href="#prod5">Statement</a></td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"while" "(" <a href="#prod9">Expression</a> ")" <a href="#prod5">Statement</a></td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"System.out.println" "(" <a href="#prod9">Expression</a> ")" ";"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod4">Identifier</a> "=" <a href="#prod9">Expression</a> ";"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod4">Identifier</a> "[" <a href="#prod9">Expression</a> "]" "=" <a href="#prod9">Expression</a> ";"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod9">Expression</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod9">Expression</a> ( "&amp;&amp;" | "&lt;" | "+" | "-" | "*" ) <a href="#prod9">Expression</a></td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod9">Expression</a> "[" <a href="#prod9">Expression</a> "]"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod9">Expression</a> "." "length"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod9">Expression</a> "." <a href="#prod4">Identifier</a> "(" ( <a href="#prod9">Expression</a> ( "," <a href="#prod9">Expression</a> )* )? ")"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">&lt;INTEGER_LITERAL&gt;</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"true"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"false"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT"><a href="#prod4">Identifier</a></td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"this"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"new" "int" "[" <a href="#prod9">Expression</a> "]"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"new" <a href="#prod4">Identifier</a> "(" ")"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"!" <a href="#prod9">Expression</a></td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"></td>
+<td valign="BASELINE" align="CENTER">|</td>
+<td valign="BASELINE" align="LEFT">"(" <a href="#prod9">Expression</a> ")"</td>
+</tr>
+<tr>
+<td valign="BASELINE" align="RIGHT"><a name="prod4">Identifier</a></td>
+<td valign="BASELINE" align="CENTER">::=</td>
+<td valign="BASELINE" align="LEFT">&lt;IDENTIFIER&gt;</td>
+</tr>
+</tbody></table>
+
+
+</body></html>
